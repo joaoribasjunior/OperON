@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html class="scroll-smooth" lang="pt-BR">
+
+<head>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <title>Validador de XML RT 2026 | OperON</title>
+  <meta content="Validador gratuito de NF-e/NFC-e para a Reforma Tributária 2026. IBS, CBS." name="description" />
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <!-- HTML2PDF CDN -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+  <!-- Google Fonts: Inter for modern typography -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&amp;display=swap"
+    rel="stylesheet" />
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              orange: '#FF6B00',
+              dark: '#0A0A0A',
+              card: 'rgba(20, 20, 20, 0.8)',
+            }
+          },
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+          },
+          animation: {
+            'pulse-slow': 'pulse 6s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+            'float': 'float 3s ease-in-out infinite',
+          },
+          keyframes: {
+            float: {
+              '0%, 100%': { transform: 'translateY(0)' },
+              '50%': { transform: 'translateY(-10px)' },
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <style data-purpose="custom-layout">
+    body {
+      background-color: #050505;
+      color: #FFFFFF;
+      overflow-x: hidden;
+    }
+
+    /* Glassmorphism Effect */
+    .glass-card {
+      background: rgba(255, 255, 255, 0.03);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    .glass-card:hover {
+      border-color: rgba(255, 107, 0, 0.4);
+      transform: translateY(-5px);
+      box-shadow: 0 10px 30px -10px rgba(255, 107, 0, 0.2);
+    }
+
+    /* Neural Mesh Background Simulation */
+    .bg-grid {
+      background-size: 40px 40px;
+      background-image:
+        linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+    }
+
+    .glow-blob {
+      position: absolute;
+      width: 400px;
+      height: 400px;
+      background: radial-gradient(circle, rgba(255, 107, 0, 0.1) 0%, transparent 70%);
+      border-radius: 50%;
+      filter: blur(60px);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: #0A0A0A;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: #333;
+      border-radius: 10px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: #FF6B00;
+    }
+  </style>
+</head>
+
+<body class="font-sans antialiased">
+  <!-- BEGIN: Background Elements -->
+  <div class="fixed inset-0 z-[-1] overflow-hidden pointer-events-none">
+    <div class="absolute inset-0 bg-grid"></div>
+    <div class="glow-blob top-[-10%] left-[-10%]" style="transform: translate(2.79688px, 13.6555px);"></div>
+    <div class="glow-blob bottom-[-10%] right-[-10%] animate-pulse-slow"
+      style="transform: translate(5.59375px, 27.311px);"></div>
+    <svg class="absolute top-0 left-0 w-full h-full opacity-20" preserveaspectratio="none">
+      <path class="animate-pulse" d="M0 100 Q 250 50 500 100 T 1000 100" fill="none" stroke="#FF6B00"
+        stroke-width="0.5"></path>
+      <path class="animate-pulse-slow" d="M0 200 Q 300 250 600 200 T 1200 200" fill="none" stroke="#FF6B00"
+        stroke-width="0.5"></path>
+    </svg>
+  </div>
+  <!-- END: Background Elements -->
+
+  <!-- BEGIN: MainHeader -->
+  <header class="fixed top-0 left-0 w-full z-50 px-6 py-4">
+    <nav class="max-w-7xl mx-auto flex items-center justify-between glass-card rounded-full px-6 py-3">
+      <div class="text-2xl tracking-tighter flex items-center">
+        <a href="index.html">
+          <span class="font-light text-white">Oper</span><span
+            class="font-extrabold text-brand-orange uppercase">ON</span>
+        </a>
+      </div>
+      <ul class="hidden md:flex items-center space-x-8 text-sm font-medium text-gray-400">
+        <li><a class="hover:text-white transition-colors" href="index.html#home">Home</a></li>
+        <li><a class="hover:text-white transition-colors" href="index.html#sobre">Sobre</a></li>
+        <li><a class="hover:text-white transition-colors" href="index.html#produtos">Produtos</a></li>
+        <li><a class="hover:text-white transition-colors" href="index.html#taas">TaaS</a></li>
+        <li><a class="text-brand-orange hover:text-white transition-colors" href="validador.html">Utilitários</a></li>
+      </ul>
+      <a class="bg-brand-orange text-white px-6 py-2 rounded-full text-sm font-bold hover:bg-orange-500 transition-all hover:shadow-[0_0_20px_rgba(255,107,0,0.4)]"
+        href="index.html#contato">
+        Fale Conosco
+      </a>
+    </nav>
+  </header>
+  <!-- END: MainHeader -->
+
+  <main class="relative z-10 pt-32 pb-24">
+    <section class="max-w-7xl mx-auto px-6 relative">
+      <!-- Header -->
+      <div class="text-center mb-12 relative z-10">
+        <div
+          class="inline-block mb-4 px-4 py-1 rounded-full border border-orange-500/30 bg-orange-500/10 text-brand-orange text-xs font-bold uppercase tracking-widest animate-float">
+          OperON Utilities
+        </div>
+        <h1
+          class="text-4xl md:text-5xl font-extrabold tracking-tight mb-4 flex items-center justify-center gap-4 text-white">
+          <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+            class="text-brand-orange">
+            <path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z" />
+            <path d="M10 13l-2 2 2 2" />
+            <path d="M14 13l2 2-2 2" />
+          </svg>
+          Validador NF-e/NFC-e
+        </h1>
+        <p class="text-gray-400">Reforma Tributária 2026 • Ferramenta Gratuita</p>
+      </div>
+
+      <!-- Inputs -->
+      <div class="grid md:grid-cols-2 gap-8 mb-8 relative z-10">
+        <!-- Upload Area -->
+        <div class="glass-card rounded-[2rem] p-8">
+          <h2 class="text-2xl font-bold text-white mb-6 flex items-center gap-3">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+              class="text-brand-orange">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+              <polyline points="17 8 12 3 7 8" />
+              <line x1="12" y1="3" x2="12" y2="15" />
+            </svg>
+            Importar XML
+          </h2>
+          <div id="drop-zone"
+            class="border-2 border-dashed border-gray-600 rounded-xl p-10 text-center cursor-pointer transition-all hover:border-brand-orange hover:bg-white/5 bg-black/20"
+            ondragover="event.preventDefault(); this.classList.add('border-brand-orange', 'bg-white/5');"
+            ondragleave="this.classList.remove('border-brand-orange', 'bg-white/5');"
+            ondrop="event.preventDefault(); this.classList.remove('border-brand-orange', 'bg-white/5'); handleDrop(event);">
+            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+              class="text-brand-orange mx-auto mb-3">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+              <polyline points="17 8 12 3 7 8" />
+              <line x1="12" y1="3" x2="12" y2="15" />
+            </svg>
+            <p class="text-gray-400 mb-2">Clique para selecionar ou arraste seu arquivo XML</p>
+            <p class="text-xs text-gray-500">Suportado: arquivos .xml</p>
+            <input type="file" id="file-input" accept=".xml" class="hidden" onchange="handleFileSelect(event)">
+          </div>
+          <div id="file-status"
+            class="mt-4 p-4 bg-green-900/20 border-l-4 border-green-500 rounded text-sm text-green-400 hidden">
+            ✓ Arquivo carregado: <strong id="file-name-display" class="text-white"></strong>
+          </div>
+        </div>
+
+        <!-- Text Area -->
+        <div class="glass-card rounded-[2rem] p-8 flex flex-col">
+          <h2 class="text-2xl font-bold text-white mb-6 flex items-center gap-3">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+              class="text-brand-orange">
+              <path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z" />
+              <polyline points="14 2 14 8 20 8" />
+              <line x1="16" y1="13" x2="8" y2="13" />
+              <line x1="16" y1="17" x2="8" y2="17" />
+              <line x1="10" y1="9" x2="8" y2="9" />
+            </svg>
+            Ou cole seu XML
+          </h2>
+          <textarea id="xml-input"
+            class="flex-grow w-full min-h-[200px] p-4 bg-black/40 border border-gray-600 rounded-xl font-mono text-sm focus:outline-none focus:ring-1 focus:ring-brand-orange focus:border-brand-orange text-gray-300 resize-y"
+            placeholder="Cole o conteúdo do seu arquivo XML aqui..." oninput="handleTextInput(event)"></textarea>
+        </div>
+      </div>
+
+      <!-- Results Area -->
+      <div id="results-area" class="hidden glass-card rounded-[2rem] overflow-hidden relative z-10 transition-all mt-8">
+        <!-- Summary -->
+        <div id="results-summary" class="p-8 border-b border-white/10">
+        </div>
+        <!-- Details -->
+        <div id="results-details" class="p-8">
+        </div>
+        <!-- Footer / Download -->
+        <div class="p-6 border-t border-white/10 bg-black/40 flex justify-end gap-4">
+          <button onclick="clearValidator()"
+            class="px-6 py-3 bg-red-600/20 border border-red-500/50 text-red-500 font-bold rounded-xl hover:bg-red-600 hover:text-white transition-all flex items-center gap-2">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M3 6h18" />
+              <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" />
+              <line x1="10" y1="11" x2="10" y2="17" />
+              <line x1="14" y1="11" x2="14" y2="17" />
+            </svg>
+            Limpar
+          </button>
+          <button id="download-btn" onclick="downloadReport()"
+            class="px-6 py-3 bg-brand-orange text-white font-bold rounded-xl hover:bg-orange-500 transition-all flex items-center gap-2">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+              <polyline points="7 10 12 15 17 10" />
+              <line x1="12" y1="15" x2="12" y2="3" />
+            </svg>
+            Baixar Relatório
+          </button>
+        </div>
+      </div>
+
+      <!-- Info -->
+      <div id="info-area" class="glass-card rounded-[2rem] p-8 mt-8 relative z-10">
+        <h3 class="text-xl font-bold mb-4 text-white">ℹ️ Como funciona</h3>
+        <ul class="text-gray-400 space-y-2 list-disc ml-4">
+          <li>Carregue seu arquivo XML de NF-e ou NFC-e</li>
+          <li>A ferramenta valida automaticamente contra as regras da Reforma Tributária 2026</li>
+          <li>Verifica obrigatoriedade de CST-IBS/CBS e cClassTrib em todos os itens</li>
+          <li>Identifica incompatibilidades e sugere correções</li>
+          <li>Gera relatório detalhado para download</li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <!-- BEGIN: MainFooter -->
+  <footer class="max-w-7xl mx-auto px-6 py-12 border-t border-white/5">
+    <div class="flex flex-col md:flex-row justify-between items-center gap-8">
+      <div class="text-xl tracking-tighter flex items-center">
+        <a href="index.html">
+          <span class="font-light text-white">Oper</span><span
+            class="font-extrabold text-brand-orange uppercase">ON</span>
+        </a>
+      </div>
+      <div class="flex items-center gap-6 text-gray-400 text-sm">
+        <a class="hover:text-white transition-colors" href="https://operon.tec.br">operon.tec.br</a>
+        <a class="flex items-center gap-2 hover:text-white transition-colors" href="https://instagram.com/operon.tec"
+          target="_blank">
+          <svg class="w-5 h-5" fill="currentColor" viewbox="0 0 24 24">
+            <path
+              d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z">
+            </path>
+          </svg>
+          @operon.tec
+        </a>
+      </div>
+    </div>
+    <div class="mt-8 text-center text-[10px] text-gray-600 uppercase tracking-widest">
+      © 2026 OperON - Task as a Service. Todos os direitos reservados.
+    </div>
+  </footer>
+  <!-- END: MainFooter -->
+
+  <!-- BEGIN: Validator Logic -->
+  <script>
+    let currentFileName = '';
+    let currentValidationResults = null;
+    let xmlContent = '';
+
+    const cstCodes = {
+      '000': { label: 'Tributação Integral', description: 'IBS e CBS aplicados normalmente' },
+      '200': { label: 'Alíquota Reduzida', description: 'Inclui alíquota zero' },
+      '400': { label: 'Isenção', description: 'Operação desonerada' },
+      '410': { label: 'Imunidade/Não Incidência', description: 'Fora do campo de incidência' },
+      '500': { label: 'Diferimento', description: 'Imposto diferido' },
+      '550': { label: 'Crédito Presumido', description: 'Regime especial' },
+      '830': { label: 'Exclusão Especial', description: 'Casos específicos' }
+    };
+
+    const validateCSTcClassTribCompatibility = (cst, cClassTrib) => {
+      const validCombinations = {
+        '000': (cc) => cc.startsWith('10'),
+        '200': (cc) => cc.startsWith('2') || cc.startsWith('3'),
+        '400': (cc) => cc.startsWith('4'),
+        '410': (cc) => cc.startsWith('4') || cc.startsWith('2'),
+        '500': (cc) => cc.startsWith('5'),
+        '550': (cc) => cc.startsWith('55'),
+        '830': (cc) => cc.startsWith('83')
+      };
+
+      if (validCombinations[cst]) {
+        return validCombinations[cst](cClassTrib);
+      }
+      return false;
+    };
+
+    const validateNFeStructure = (xml) => {
+      const issues = [];
+      const warnings = [];
+      const successes = [];
+
+      try {
+        const parser = new DOMParser();
+        const xmlDoc = parser.parseFromString(xml, 'text/xml');
+
+        if (xmlDoc.getElementsByTagName('parsererror').length > 0) {
+          return { isValid: false, critical: ['XML inválido ou malformado'], issues: [], warnings: [], successes: [], details: null };
+        }
+
+        const det = xmlDoc.getElementsByTagName('det');
+        if (det.length === 0) issues.push('Nenhum item (det) encontrado no XML');
+
+        const infNFe = xmlDoc.getElementsByTagName('infNFe')[0];
+        const ide = xmlDoc.getElementsByTagName('ide')[0];
+        const emit = xmlDoc.getElementsByTagName('emit')[0];
+
+        if (!infNFe) {
+          issues.push('Elemento infNFe não encontrado');
+          return { isValid: false, critical: issues, issues: [], warnings: [], successes: [], details: null };
+        }
+
+        const details = {
+          nNF: ide ? (ide.getElementsByTagName('nNF')[0]?.textContent || 'N/A') : 'N/A',
+          serie: ide ? (ide.getElementsByTagName('serie')[0]?.textContent || 'N/A') : 'N/A',
+          dEmi: ide ? (ide.getElementsByTagName('dhEmi')[0]?.textContent || ide.getElementsByTagName('dEmi')[0]?.textContent || 'N/A') : 'N/A',
+          cnpjEmit: emit ? (emit.getElementsByTagName('CNPJ')[0]?.textContent || 'N/A') : 'N/A',
+          items: []
+        };
+
+        successes.push(`✓ Estrutura XML válida e bem formada`);
+
+        for (let i = 0; i < det.length; i++) {
+          const item = det[i];
+          const prod = item.getElementsByTagName('prod')[0];
+          const imposto = item.getElementsByTagName('imposto')[0];
+
+          let hasCSTIBS = null;
+          let cClassTrib = null;
+          let vIBS = null;
+          let vCBS = null;
+
+          // Procurar pelas tags IBS e CBS dentro de imposto (segundo notas técnicas mais recentes, podem estar agrupadas)
+          if (imposto) {
+            const ibsList = imposto.getElementsByTagName('IBS');
+            const cbsList = imposto.getElementsByTagName('CBS');
+            if (ibsList.length > 0) {
+              const cstTag = ibsList[0].getElementsByTagName('CST')[0];
+              if (cstTag) hasCSTIBS = cstTag.textContent;
+              const vIBS_tag = ibsList[0].getElementsByTagName('vIBS')[0];
+              if (vIBS_tag) vIBS = vIBS_tag.textContent;
+              const cClassTribTag = ibsList[0].getElementsByTagName('cClassTrib')[0];
+              if (cClassTribTag) cClassTrib = cClassTribTag.textContent;
+            } else {
+              // Tenta buscar as tags diretamente dentro do item (caso de estrutura provisória / UB)
+              const ub = item.getElementsByTagName('ub')[0];
+              if (ub) {
+                hasCSTIBS = ub.getElementsByTagName('CST')[0]?.textContent;
+                cClassTrib = ub.getElementsByTagName('cClassTrib')[0]?.textContent;
+                vIBS = ub.getElementsByTagName('vIBS')[0]?.textContent;
+                vCBS = ub.getElementsByTagName('vCBS')[0]?.textContent;
+              }
+            }
+          }
+
+          const itemData = {
+            index: i + 1,
+            descr: prod ? (prod.getElementsByTagName('xProd')[0]?.textContent || 'N/A') : 'N/A',
+            valor: prod ? (prod.getElementsByTagName('vProd')[0]?.textContent || prod.getElementsByTagName('vItem')[0]?.textContent || '0') : '0',
+            ncm: prod ? (prod.getElementsByTagName('NCM')[0]?.textContent || 'N/A') : 'N/A',
+            hasCSTIBS: hasCSTIBS,
+            cClassTrib: cClassTrib,
+            vIBS: vIBS,
+            vCBS: vCBS,
+            issues: [],
+            warnings: [],
+            suggestions: []
+          };
+
+          if (!itemData.hasCSTIBS) {
+            itemData.issues.push('CST-IBS/CBS não informado (obrigatório em 2026)');
+          } else {
+            itemData.successes = [`CST encontrado: ${itemData.hasCSTIBS}`];
+            if (!cstCodes[itemData.hasCSTIBS]) {
+              itemData.issues.push(`CST '${itemData.hasCSTIBS}' inválido`);
+            }
+          }
+
+          if (!itemData.cClassTrib) {
+            itemData.issues.push('cClassTrib não informado (obrigatório em 2026)');
+          } else {
+            if (!/^\d{6}$/.test(itemData.cClassTrib)) {
+              itemData.issues.push(`cClassTrib '${itemData.cClassTrib}' formato inválido (deve ser 6 dígitos)`);
+            }
+            if (itemData.hasCSTIBS && itemData.cClassTrib) {
+              if (!validateCSTcClassTribCompatibility(itemData.hasCSTIBS, itemData.cClassTrib)) {
+                itemData.warnings.push(`Possível incompatibilidade entre CST ${itemData.hasCSTIBS} e cClassTrib ${itemData.cClassTrib}`);
+                itemData.suggestions.push(`Verifique a tabela oficial se essa combinação é permitida para ${itemData.descr}`);
+              } else {
+                itemData.successes = itemData.successes || [];
+                itemData.successes.push(`CST ${itemData.hasCSTIBS} compatível com cClassTrib ${itemData.cClassTrib}`);
+              }
+            }
+          }
+
+          if (itemData.hasCSTIBS === '000' && (!itemData.vIBS && !itemData.vCBS)) { // Modificado para aceitar um ou outro caso as tags sejam separadas
+            // This is a loose check: if both are missing
+          } else if (itemData.hasCSTIBS === '000' && (!itemData.vIBS || !itemData.vCBS)) {
+            // strict check
+            itemData.warnings.push('CST 000 (tributação integral) sem um dos valores de IBS/CBS informados');
+            itemData.suggestions.push('Para tributação integral, informe vIBS e vCBS');
+          }
+
+          if ((itemData.hasCSTIBS === '400' || itemData.hasCSTIBS === '410') && (itemData.vIBS > 0 || itemData.vCBS > 0)) {
+            itemData.warnings.push(`CST ${itemData.hasCSTIBS} (isento/não incidência) com valores maiores que 0 de IBS/CBS`);
+            itemData.suggestions.push('Operações isentas/não incidentes devem ter vIBS e vCBS = 0 ou vazio');
+          }
+
+          details.items.push(itemData);
+        }
+
+        return { isValid: issues.length === 0, critical: issues, issues: issues, warnings: warnings, successes: successes, details: details };
+
+      } catch (error) {
+        return { isValid: false, critical: ['Erro ao processar XML: ' + error.message], issues: [], warnings: [], successes: [], details: null };
+      }
+    };
+
+    function processValidation(content) {
+      if (!content || content.trim().length === 0) {
+        hideResults();
+        return;
+      }
+      const results = validateNFeStructure(content);
+      currentValidationResults = results;
+      renderResults(results);
+    }
+
+    function renderResults(results) {
+      document.getElementById('info-area').classList.add('hidden');
+      const resultsArea = document.getElementById('results-area');
+      const summaryDiv = document.getElementById('results-summary');
+      const detailsDiv = document.getElementById('results-details');
+
+      resultsArea.classList.remove('hidden');
+
+      // Summary
+      let summaryHTML = '';
+      if (results.isValid) {
+        summaryDiv.className = "p-8 border-b border-green-900/40 bg-green-500/10";
+        summaryHTML += `<div class="flex items-center gap-3 mb-3">
+              <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-green-500"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+              <h3 class="text-2xl font-bold text-green-400">Validação Bem-Sucedida</h3>
+          </div>`;
+      } else {
+        summaryDiv.className = "p-8 border-b border-red-900/40 bg-red-500/10";
+        summaryHTML += `<div class="flex items-center gap-3 mb-3">
+              <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-red-500"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+              <h3 class="text-2xl font-bold text-red-400">Problemas Encontrados</h3>
+          </div>`;
+      }
+
+      if (results.critical && results.critical.length > 0) {
+        summaryHTML += `<div class="mt-4"><p class="text-sm font-bold text-red-500 mb-2">ERROS CRÍTICOS:</p><ul class="list-disc ml-5 text-sm text-red-400 space-y-1">`;
+        results.critical.forEach(err => { summaryHTML += `<li>${err}</li>`; });
+        summaryHTML += `</ul></div>`;
+      }
+
+      if (results.successes && results.successes.length > 0) {
+        summaryHTML += `<div class="mt-4"><p class="text-sm font-bold text-green-500 mb-2">Tudo Certo (Base):</p><ul class="list-disc ml-5 text-sm text-green-400 space-y-1">`;
+        results.successes.forEach(msg => { summaryHTML += `<li>${msg}</li>`; });
+        summaryHTML += `</ul></div>`;
+      }
+      summaryDiv.innerHTML = summaryHTML;
+
+      // Details
+      let detailsHTML = '';
+      if (results.details && results.details.items && results.details.items.length > 0) {
+        detailsHTML += `<h3 class="text-xl font-bold text-white mb-6 flex items-center gap-2"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-brand-orange"><rect x="3" y="4" width="18" height="18" fill="none" rx="2" ry="2" stroke-linecap="round" stroke-linejoin="round"/><line x1="16" y1="2" x2="16" y2="6" stroke-linecap="round" stroke-linejoin="round"/><line x1="8" y1="2" x2="8" y2="6" stroke-linecap="round" stroke-linejoin="round"/><line x1="3" y1="10" x2="21" y2="10" stroke-linecap="round" stroke-linejoin="round"/></svg>Análise por Item</h3>`;
+
+        results.details.items.forEach(item => {
+          let borderClass = 'border-l-4 border-green-500';
+          let bgClass = 'bg-white/5';
+          if (item.issues && item.issues.length > 0) { borderClass = 'border-l-4 border-red-500'; bgClass = 'bg-red-900/10'; }
+          else if (item.warnings && item.warnings.length > 0) { borderClass = 'border-l-4 border-yellow-500'; bgClass = 'bg-yellow-900/10'; }
+
+          detailsHTML += `<div class="mb-6 rounded-lg ${bgClass} border ${borderClass} border-r-white/5 border-t-white/5 border-b-white/5 p-5">`;
+
+          // Item Header
+          detailsHTML += `<div class="flex flex-col md:flex-row md:justify-between md:items-start mb-4">
+                  <div>
+                      <p class="text-lg font-bold text-white mb-1">Item ${item.index}: ${item.descr}</p>
+                      <p class="text-sm text-gray-400">NCM: <span class="text-gray-300">${item.ncm}</span> &nbsp;|&nbsp; Valor: <span class="text-gray-300">R$ ${item.valor}</span></p>
+                  </div>
+              </div>`;
+
+          // CST / cClassTrib
+          detailsHTML += `<div class="grid grid-cols-2 gap-4 mb-4 text-sm bg-black/40 p-3 rounded-lg border border-white/5">
+                  <div>
+                      <span class="text-gray-500 block text-xs uppercase tracking-wider mb-1">CST-IBS/CBS</span>
+                      <span class="font-bold ${item.hasCSTIBS ? 'text-brand-orange' : 'text-red-500'}">${item.hasCSTIBS || '❌ Não informado'}</span>
+                  </div>
+                  <div>
+                      <span class="text-gray-500 block text-xs uppercase tracking-wider mb-1">cClassTrib</span>
+                      <span class="font-bold ${item.cClassTrib ? 'text-brand-orange' : 'text-red-500'}">${item.cClassTrib || '❌ Não informado'}</span>
+                  </div>
+              </div>`;
+
+          // Valores (IBS, CBS)
+          detailsHTML += `<div class="grid grid-cols-2 gap-4 mb-4 text-sm bg-black/40 p-3 rounded-lg border border-white/5">
+                  <div>
+                      <span class="text-gray-500 block text-xs uppercase tracking-wider mb-1">Valor IBS</span>
+                      <span class="font-bold ${item.vIBS ? 'text-gray-300' : 'text-red-500'}">${item.vIBS ? 'R$ ' + item.vIBS : '❌ Não informado'}</span>
+                  </div>
+                  <div>
+                      <span class="text-gray-500 block text-xs uppercase tracking-wider mb-1">Valor CBS</span>
+                      <span class="font-bold ${item.vCBS ? 'text-gray-300' : 'text-red-500'}">${item.vCBS ? 'R$ ' + item.vCBS : '❌ Não informado'}</span>
+                  </div>
+              </div>`;
+
+          // Issues, Warnings, Suggestions
+          if (item.issues && item.issues.length > 0) {
+            detailsHTML += `<div class="mb-3"><p class="text-xs font-bold text-red-500 mb-1 flex items-center gap-1"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>PROBLEMAS:</p>`;
+            item.issues.forEach(iss => { detailsHTML += `<p class="text-sm text-red-400 ml-5">• ${iss}</p>`; });
+            detailsHTML += `</div>`;
+          }
+          if (item.warnings && item.warnings.length > 0) {
+            detailsHTML += `<div class="mb-3"><p class="text-xs font-bold text-yellow-500 mb-1 flex items-center gap-1"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>AVISOS:</p>`;
+            item.warnings.forEach(warn => { detailsHTML += `<p class="text-sm text-yellow-400 ml-5">• ${warn}</p>`; });
+            detailsHTML += `</div>`;
+          }
+          if (item.suggestions && item.suggestions.length > 0) {
+            detailsHTML += `<div><p class="text-xs font-bold text-green-500 mb-1 flex items-center gap-1"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"/></svg>SUGESTÕES:</p>`;
+            item.suggestions.forEach(sug => { detailsHTML += `<p class="text-sm text-green-400 ml-5">• ${sug}</p>`; });
+            detailsHTML += `</div>`;
+          }
+
+          detailsHTML += `</div>`;
+        });
+      }
+      detailsDiv.innerHTML = detailsHTML;
+    }
+
+    function hideResults() {
+      document.getElementById('results-area').classList.add('hidden');
+      document.getElementById('info-area').classList.remove('hidden');
+    }
+
+    // Event Handlers
+    function handleTextInput(event) {
+      xmlContent = event.target.value;
+      const fileUploadDisplay = document.getElementById('file-status');
+      fileUploadDisplay.classList.add('hidden');
+      currentFileName = 'Texto Colado';
+      processValidation(xmlContent);
+    }
+
+    function handleFile(file) {
+      if (!file) return;
+      currentFileName = file.name;
+
+      const fileUploadDisplay = document.getElementById('file-status');
+      const fileNameDisplay = document.getElementById('file-name-display');
+
+      fileNameDisplay.textContent = currentFileName;
+      fileUploadDisplay.classList.remove('hidden');
+
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        xmlContent = e.target.result;
+        // Also sync it to the textarea for visibility if user wants
+        document.getElementById('xml-input').value = xmlContent;
+        processValidation(xmlContent);
+      };
+      reader.readAsText(file);
+    }
+
+    function handleFileSelect(event) {
+      handleFile(event.target.files[0]);
+    }
+
+    function handleDrop(event) {
+      event.preventDefault();
+      const files = event.dataTransfer.files;
+      if (files && files.length > 0) {
+        handleFile(files[0]);
+      }
+    }
+
+    // Trigger file dialog on drop-zone click
+    document.getElementById('drop-zone').addEventListener('click', () => {
+      document.getElementById('file-input').click();
+    });
+
+    function clearValidator() {
+      xmlContent = '';
+      currentFileName = '';
+      currentValidationResults = null;
+      document.getElementById('xml-input').value = '';
+      document.getElementById('file-input').value = '';
+      document.getElementById('file-status').classList.add('hidden');
+      hideResults();
+    }
+
+    function downloadReport() {
+      if (!currentValidationResults) return;
+      const res = currentValidationResults;
+
+      let txt = "========================================================\n";
+      txt += "           OperON - Relatório de Validação XML          \n";
+      txt += "          NF-e/NFC-e Reforma Tributária 2026            \n";
+      txt += "========================================================\n\n";
+
+      txt += `Data: ${new Date().toLocaleString('pt-BR')}\n`;
+      txt += `Arquivo: ${currentFileName}\n`;
+      txt += `Status Geral: ${res.isValid ? 'VÁLIDO' : 'INVÁLIDO'}\n\n`;
+
+      if (res.critical && res.critical.length > 0) {
+        txt += "========================================================\n";
+        txt += "ERROS CRÍTICOS (NÍVEL XML):\n";
+        res.critical.forEach(e => txt += ` - ${e}\n`);
+        txt += "========================================================\n\n";
+      }
+
+      if (res.details) {
+        txt += "INFORMAÇÕES DO DOCUMENTO:\n";
+        txt += `NF: ${res.details.nNF}\n`;
+        txt += `Série: ${res.details.serie}\n`;
+        txt += `Emissão: ${res.details.dEmi}\n`;
+        txt += `CNPJ: ${res.details.cnpjEmit}\n\n`;
+
+        if (res.details.items && res.details.items.length > 0) {
+          txt += `========================================================\n`;
+          txt += `ITENS ANALISADOS (${res.details.items.length})\n`;
+          txt += `========================================================\n\n`;
+
+          res.details.items.forEach(item => {
+            txt += `Item ${item.index}: ${item.descr}\n`;
+            txt += `NCM: ${item.ncm} | Valor do Item: R$ ${item.valor}\n`;
+            txt += `CST-IBS/CBS: ${item.hasCSTIBS || 'NÃO'} | cClassTrib: ${item.cClassTrib || 'NÃO'}\n`;
+            txt += `Valor IBS: ${item.vIBS ? 'R$ ' + item.vIBS : 'Não inf.'} | Valor CBS: ${item.vCBS ? 'R$ ' + item.vCBS : 'Não inf.'}\n`;
+
+            if (item.issues && item.issues.length > 0) {
+              txt += `\n  [PROBLEMAS]\n`;
+              item.issues.forEach(iss => txt += `  * ${iss}\n`);
+            }
+            if (item.warnings && item.warnings.length > 0) {
+              txt += `\n  [AVISOS]\n`;
+              item.warnings.forEach(warn => txt += `  * ${warn}\n`);
+            }
+            if (item.suggestions && item.suggestions.length > 0) {
+              txt += `\n  [SUGESTÕES]\n`;
+              item.suggestions.forEach(sug => txt += `  * ${sug}\n`);
+            }
+            txt += "\n--------------------------------------------------------\n\n";
+          });
+        }
+      }
+
+      txt += "OperON - Task as a Service.\n";
+      txt += "Soluções sob demanda para sistemas escaláveis.\n";
+      txt += "Acesse agora www.operontec.com.br\n";
+
+      // Disparar download de arquivo .txt no navegador
+      const blob = new Blob([txt], { type: 'text/plain;charset=utf-8' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `validacao_operon_${new Date().getTime()}.txt`;
+      document.body.appendChild(a);
+      a.click();
+
+      setTimeout(() => {
+        if (document.body.contains(a)) document.body.removeChild(a);
+        window.URL.revokeObjectURL(url);
+      }, 100);
+    }
+  </script>
+</body>
+
+</html>
